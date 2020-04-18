@@ -11,8 +11,6 @@ import DeliveryProblem from '../app/models/DeliveryProblem';
 
 const models = [Admin, Recipient, File, Deliveryman, Delivery, DeliveryProblem];
 
-const modelsForTest = [Recipient, File, Deliveryman, Delivery, DeliveryProblem];
-
 class Database {
   constructor() {
     this.init();

@@ -12,6 +12,7 @@ class RecipientController{
             cep: Yup.number().min(8).required(),
             street: Yup.string().required(),
             number: Yup.number().required(),
+            street: Yup.string().required(),
             complement: Yup.string().notRequired(),
             city: Yup.string().required(),
             state: Yup.string().required(),
@@ -21,6 +22,10 @@ class RecipientController{
         }
 
         const recipient = await Recipient.create(req.body);
+
+        if(!recipient){
+            res.status(401).json({ error: 'Erro ao inserir destinatario.'});
+        }
 
         return res.json(recipient);
     }
@@ -48,14 +53,14 @@ class RecipientController{
     async update(req, res){
         const { id } = req.params;
         const schema = Yup.object().shape({
-            name: Yup.string().required(),
-            cep: Yup.number().min(8).required(),
-            street: Yup.string().required(),
-            number: Yup.number().required(),
-            street: Yup.string().required(),
+            name: Yup.string().notRequired(),
+            cep: Yup.number().min(8).notRequired(),
+            street: Yup.string().notRequired(),
+            number: Yup.number().notRequired(),
+            street: Yup.string().notRequired(),
             complement: Yup.string().notRequired(),
-            city: Yup.string().required(),
-            state: Yup.string().required(),
+            city: Yup.string().notRequired(),
+            state: Yup.string().notRequired(),
         });
 
         if(!(await schema.isValid(req.body))){

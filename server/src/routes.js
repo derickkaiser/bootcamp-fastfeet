@@ -13,6 +13,7 @@ import EndDeliveryController from './app/controllers/EndDeliveryController';
 import DeliveryProblemController from './app/controllers/DeliveryProblemController';
 import AllDeliveryProblemController from './app/controllers/AllDeliveryProblemController';
 import CancelDeliveryController from './app/controllers/CancelDeliveryController';
+import CheckDeliveredDeliveryController from './app/controllers/CheckDeliveredDeliveryController';
 
 import authMiddleware from './app/middlewares/auth';
 
@@ -21,10 +22,19 @@ const upload = multer(multerConfig);
 
 routes.post('/sessions', SessionController.store);
 
-routes.get('/deliveryman/:id/deliveries', CheckDeliveryController.index);
+routes.get('/deliverymen', DeliverymanController.index);
 
-routes.put('/deliveryman/:id/end_delivery', EndDeliveryController.update);
-routes.put('/deliveryman/:id/withdraw_delivery', StartDeliveryController.update);
+routes.get('/deliveryman/:id/deliveries', CheckDeliveryController.index);
+routes.get(
+  '/deliveryman/:id/delivered_deliveries',
+  CheckDeliveredDeliveryController.index
+);
+
+/* DeliveryProblem's routes */
+routes.get('/delivery/:id/problems', DeliveryProblemController.index);
+
+routes.put('/delivery/:id/end_delivery', EndDeliveryController.update);
+routes.put('/delivery/:id/withdraw_delivery', StartDeliveryController.update);
 
 routes.post('/delivery/:id/problems', DeliveryProblemController.store);
 
@@ -43,7 +53,6 @@ routes.post('/files', upload.single('file'), FileController.store);
 
 /* Deliveryman's routes */
 routes.post('/deliverymen', DeliverymanController.store);
-routes.get('/deliverymen', DeliverymanController.index);
 routes.put('/deliverymen/:id', DeliverymanController.update);
 routes.delete('/deliverymen/:id', DeliverymanController.delete);
 
@@ -52,9 +61,6 @@ routes.post('/deliveries', DeliveryController.store);
 routes.get('/deliveries', DeliveryController.index);
 routes.put('/deliveries/:id', DeliveryController.update);
 routes.delete('/deliveries/:id', DeliveryController.delete);
-
-/* DeliveryProblem's routes */
-routes.get('/delivery/:id/problems', DeliveryProblemController.index);
 
 /* CancelDelivery's routes */
 routes.delete('/problem/:id/cancel-delivery', CancelDeliveryController.delete);

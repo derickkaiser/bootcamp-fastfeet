@@ -1,4 +1,4 @@
-import './bootstrap';
+import 'dotenv/config';
 
 import Youch from 'youch';
 import express from 'express';
@@ -36,9 +36,8 @@ class App {
 
         return res.status(500).json(errors);
       }
-      if(process.env.NODE_ENV === 'test'){
-        return res.status(500).json({ error: 'Internal server error' });
-      }
+
+      return res.status(500).json({ error: 'Internal server error' });
     });
   }
 }
