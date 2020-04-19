@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MdAdd, MdSearch } from 'react-icons/md';
 
-import { format, parseISO } from 'date-fns';
+import EmptyList from '../../components/EmptyList';
 
 import DeliverymanItem from './DeliverymanItem';
 
@@ -37,10 +37,10 @@ export default function Delivery() {
         <Actions>
           <div>
             <MdSearch size={16} />
-            <input 
+            <input
               type="text"
               onChange={(e) => handleOnChange(e)}
-              placeholder="Buscar por entregadores"
+              placeholder="Buscar entregadores"
             />
           </div>
           <Link to="/deliverymen/create">
@@ -51,24 +51,28 @@ export default function Delivery() {
           </Link>
         </Actions>
       </TopDiv>
-      <Table>
-        <TableHeader>
-          <MinimalTableCell>ID</MinimalTableCell>
-          <MinimalTableCell>FOTO</MinimalTableCell>
-          <TableCell>NOME</TableCell>
-          <TableCell>EMAIL</TableCell>
-          <MinimalTableCell>AÇÕES</MinimalTableCell>
-        </TableHeader>
-        <TableContent>
-          {deliverymen.map(deliveryman => (
-            <DeliverymanItem
-            deliveryman={deliveryman}
-              setDeliverymen={setDeliverymen}
-              deliverymen={deliverymen}
-            />
-          ))}          
-        </TableContent>
-      </Table>
+      { deliverymen.length === 0 ? (<EmptyList/>)
+      :(
+        <Table>
+          <TableHeader>
+            <MinimalTableCell>ID</MinimalTableCell>
+            <MinimalTableCell>FOTO</MinimalTableCell>
+            <TableCell>NOME</TableCell>
+            <TableCell>EMAIL</TableCell>
+            <MinimalTableCell>AÇÕES</MinimalTableCell>
+          </TableHeader>
+          <TableContent>
+            {deliverymen.map(deliveryman => (
+              <DeliverymanItem
+              deliveryman={deliveryman}
+                setDeliverymen={setDeliverymen}
+                deliverymen={deliverymen}
+              />
+            ))}
+          </TableContent>
+        </Table>
+      )}
+
     </>
   );
 }

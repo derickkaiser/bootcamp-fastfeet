@@ -6,10 +6,11 @@ import Deliveryman from '../models/Deliveryman';
 import Recipient from '../models/Recipient';
 import File from '../models/File';
 
+import Queue from '../../lib/Queue';
 
-import Mail from '../../lib/Mail';
+import DeliveryReadyMail from '../jobs/DeliveryReadyMail';
 
-const {Op} = Sequelize;
+const { Op } = Sequelize;
 
 class DeliveryController {
   async store(req, res) {
@@ -63,17 +64,10 @@ class DeliveryController {
       canceled_at,
     });
 
-    await Mail.sendMail({
-      to: `${deliverymanExists.name} <${deliverymanExists.email}>`,
-      subject: 'Encomenda disponibilizada para retirada',
-      template: 'delivery_ready',
-      context: {
-        deliveryman: deliverymanExists.name,
-        product_name: delivery.product_name,
-        recipient_name: recipientExists.name,
-      },
+    await Queue.add(DeliveryReadyMail.key, {
+      delivery,
+      deliveryman: deliverymanExists,
     });
-    // send mail warning deliveryman with delivery's details.
 
     return res.json(delivery);
   }
@@ -151,7 +145,7 @@ class DeliveryController {
       res.status(400).json({ error: 'Validation fails.' });
     }
 
-    const { recipient_id, deliveryman_id, product_name } = req.body;
+    const { recipient_id, deliveryman_id } = req.body;
 
     const recipientExists = await Recipient.findOne({
       where: { id: recipient_id },

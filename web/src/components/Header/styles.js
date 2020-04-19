@@ -22,10 +22,14 @@ export const Home = styled.div`
   border-right: 1px solid #DDD;
   margin-right: 30px;
 
-  
+
 
   > a {
     text-decoration: none;
+
+    &:hover{
+      opacity: 0.6;
+    }
 
     display: flex;
     align-items: flex-start;
@@ -68,12 +72,15 @@ export const MenuList = styled.ul`
     line-height: 18px;
 
     a {
+      &:hover{
+        opacity: 0.6;
+      }
       color: ${props => (props.active === true ? '#444' : '#999') };
       text-decoration: none;
     }
 
   }
-  
+
   li:last-child {
     padding-right: 0;
   }
@@ -100,7 +107,7 @@ export const Profile = styled.div`
     line-height: 16px;
 
     text-align: right;
-    
+
     a {
       color: #DE3B3B;
       text-decoration: none;

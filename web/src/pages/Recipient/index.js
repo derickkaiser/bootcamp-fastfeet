@@ -39,10 +39,10 @@ export default function Recipient() {
         <Actions>
           <div>
             <MdSearch size={16} />
-            <input 
+            <input
               type="text"
               onChange={(e) => handleOnChange(e)}
-              placeholder="Buscar por destinatários"
+              placeholder="Buscar destinatários"
             />
           </div>
           <Link to="/recipients/create">
@@ -67,7 +67,7 @@ export default function Recipient() {
               setRecipients={setRecipients}
               recipients={recipients}
             />
-          ))}          
+          ))}
         </TableContent>
       </Table>
     </>

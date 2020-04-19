@@ -23,6 +23,7 @@ export default function DeliveryProblemItem({deliveryProblem, setDeliveryProblem
         <Column>{ deliveryProblem.description.length > 100 ? deliveryProblem.description.substring(0, 100).concat('...') : deliveryProblem.description}</Column>
         <MinimalTableCell>
             <MoreActions
+              cancel={true}
               object={deliveryProblem}
               handleDelete={handleDelete}
               hideEdit={true}

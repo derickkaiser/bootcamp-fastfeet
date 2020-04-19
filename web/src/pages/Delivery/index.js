@@ -5,6 +5,7 @@ import { MdAdd, MdSearch } from 'react-icons/md';
 import { format, parseISO } from 'date-fns';
 
 import DeliveryItem from './DeliveryItem';
+import EmptyList from '../../components/EmptyList';
 
 import { TopDiv, Actions, Table, TableHeader, TableContent, MinimalTableCell, TableCell } from './styles';
 import api from '../../services/api';
@@ -24,7 +25,7 @@ export default function Delivery() {
     async function loadDeliveries(){
       const response = await api.get('/deliveries');
 
-      
+
       const deliveriesList = response.data.map(d => ({
         ...d,
         formattedCanceledDate: d.canceled_at && format(parseISO(d.canceled_at), 'dd/MM/yyyy'),
@@ -45,7 +46,7 @@ export default function Delivery() {
         <Actions>
           <div>
             <MdSearch size={16} />
-            <input 
+            <input
               type="text"
               onChange={(e) => handleOnChange(e)}
               placeholder="Buscar encomendas"
@@ -59,26 +60,30 @@ export default function Delivery() {
           </Link>
         </Actions>
       </TopDiv>
-      <Table>
-        <TableHeader>
-          <MinimalTableCell>ID</MinimalTableCell>
-          <TableCell>Destinatário</TableCell>
-          <TableCell>Entregador</TableCell>
-          <TableCell>Cidade</TableCell>
-          <TableCell>Estado</TableCell>
-          <TableCell>Status</TableCell>
-          <MinimalTableCell>Ações</MinimalTableCell>
-        </TableHeader>
-        <TableContent>
-          {deliveries.map(delivery => (
-            <DeliveryItem
-              delivery={delivery}
-              setDeliveries={setDeliveries}
-              deliveries={deliveries}
-            />
-          ))}          
-        </TableContent>
-      </Table>
+      {deliveries.length === 0 ?
+        (<EmptyList/>)
+        : (
+        <Table>
+          <TableHeader>
+            <MinimalTableCell>ID</MinimalTableCell>
+            <TableCell>Destinatário</TableCell>
+            <TableCell>Entregador</TableCell>
+            <TableCell>Cidade</TableCell>
+            <TableCell>Estado</TableCell>
+            <TableCell>Status</TableCell>
+            <MinimalTableCell>Ações</MinimalTableCell>
+          </TableHeader>
+          <TableContent>
+            {deliveries.map(delivery => (
+              <DeliveryItem
+                delivery={delivery}
+                setDeliveries={setDeliveries}
+                deliveries={deliveries}
+              />
+            ))}
+          </TableContent>
+        </Table>)}
+
     </>
   );
 }

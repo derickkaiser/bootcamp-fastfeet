@@ -13,7 +13,6 @@ export const SignBox = styled.div`
   width: 360px;
   height: 448px;
   background: #FFF;
-  diplay: flex;
 
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
@@ -34,7 +33,7 @@ export const Logo = styled.div`
 export const SubmitForm = styled(Form)`
   padding-top: 20px;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
 
   justify-content: center;
 
@@ -75,6 +74,9 @@ export const ButtonDiv = styled.div`
   justify-content: center;
 
     button {
+      &:hover{
+        opacity: 0.8;
+      }
       background: #7D40E7;
       border-radius: 4px;
       align-items:center;

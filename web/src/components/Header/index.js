@@ -39,9 +39,9 @@ export default function Header() {
         </MenuList>
       </Menu>
       <Profile>
-        <span>Diego Fernandes</span>
+        <span>Admin Fastfeet</span>
         <small><Link to="/" onClick={handleLogout}>sair</Link></small>
-        
+
       </Profile>
     </Container>
   );

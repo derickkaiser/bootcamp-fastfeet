@@ -5,6 +5,7 @@ import { MdAdd, MdSearch } from 'react-icons/md';
 import { format, parseISO } from 'date-fns';
 
 import DeliveryProblemItem from './DeliveryProblemItem';
+import EmptyList from '../../components/EmptyList';
 
 import { TopDiv, Table, TableHeader, TableContent, MinimalTableCell, TableCell } from './styles';
 import api from '../../services/api';
@@ -28,6 +29,8 @@ export default function DeliveryProblem() {
       <TopDiv>
         <h1>Problemas na entrega</h1>
       </TopDiv>
+      { deliveryProblems.length === 0 ? (<EmptyList />)
+      : (
       <Table>
         <TableHeader>
           <MinimalTableCell>ENCOMENDA</MinimalTableCell>
@@ -41,9 +44,10 @@ export default function DeliveryProblem() {
               setDeliveryProblem={setDeliveryProblems}
               deliveryProblems={deliveryProblems}
             />
-          ))}          
+          ))}
         </TableContent>
-      </Table>
+      </Table>)}
     </>
+
   );
 }

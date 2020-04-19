@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const Container = styled.div`
   position: absolute;
   width: 140px;
-  left: calc(90% - 50px);
-  top: calc(35%);
+  left: ${props => (props.posX ? `${props.posX}px` : '90%')};
+  top: ${props => (props.posY ? `calc(${props.posY}px + 10px)` : '45%')};
   display: ${props => (props.isVisible ? 'display' : 'none')};
 
   background: #FFF;
@@ -33,6 +33,9 @@ export const ActionItem = styled.div`
   margin-bottom: 6px;
 
   padding-bottom: 6px;
+  &:hover{
+    opacity: 0.7;
+  }
 
   border-bottom: 1px solid #EEEEEE;
 `;

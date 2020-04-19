@@ -30,6 +30,10 @@ export const Actions = styled.div`
 
     display: flex;
 
+    &:hover{
+      opacity: 0.6;
+    }
+
     font-weight: bold;
     font-size: 14px;
     align-items: center;
@@ -39,7 +43,7 @@ export const Actions = styled.div`
     svg {
       margin-right: 5px;
     }
-    
+
   }
 
   input {
@@ -79,7 +83,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     color: #FFFFFF;
-    
+
   }
 `;
 
@@ -114,7 +118,7 @@ export const SubmitForm = styled.div`
 export const LastRowDiv = styled.div`
   display: flex;
   flex-direction: row;
-  
+
   >div {
     width: 100%;
     display: flex;

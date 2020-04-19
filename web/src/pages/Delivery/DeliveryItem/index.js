@@ -11,13 +11,13 @@ import { Delivery, Column, MinimalTableCell  } from './styles';
 
 export default function DeliveryItem({delivery, setDeliveries, deliveries}) {
   let status;
-  if(delivery.status === "pending"){
+  if(delivery.status === "PENDENTE"){
     status = <Status bgColor="#F0F0DF" color="#C1BC35" text="PENDENTE"/>;
-  }else if(delivery.status === "withdrawal"){
+  }else if(delivery.status === "RETIRADO"){
     status = <Status bgColor="#BAD2FF" color="#4D85EE" text="RETIRADA"/>;
-  }else if(delivery.status === "delivered"){
+  }else if(delivery.status === "ENTREGUE"){
     status = <Status bgColor="#DFF0DF" color="#2CA42B" text="ENTREGUE"/>;
-  }else if(delivery.status === "canceled"){
+  }else if(delivery.status === "CANCELADO"){
     status = <Status bgColor="#FAB0B0" color="#DE3B3B" text="CANCELADA"/>;
   }
 

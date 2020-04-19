@@ -34,6 +34,10 @@ export const Actions = styled.div`
 
     display: flex;
 
+    &:hover{
+      opacity: 0.6;
+    }
+
     font-weight: bold;
     font-size: 14px;
     color: #FFFFFF;
@@ -62,7 +66,7 @@ export const Actions = styled.div`
       height: 100%;
     }
   }
-  
+
 `;
 
 export const Table = styled.div`
@@ -74,7 +78,7 @@ export const Table = styled.div`
   flex-direction: column;
 `;
 
-export const TableHeader = styled.div`  
+export const TableHeader = styled.div`
   display: flex;
   margin-bottom: 14px;
   padding: 20px 0;
