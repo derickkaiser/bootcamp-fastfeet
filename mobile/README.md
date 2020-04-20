@@ -12,9 +12,11 @@ Este repositório contém a parte mobile do projeto FastFeet.
 
 * Não foi possível implementar por completo a parte da Confirmação da Entrega, pois considerando o tempo escasso de desenvolvimento/teste, utilizando o XCode do iOS não foi possível testar a câmera, pois todas as fotos tiradas ficavam pretas.
 
-* Assim como o problema anterior, também não foi possível a aplicação no Android, pois não houve tempo necessário para migrar o projeto para o Expo ou configurar um emulador Android no computador.
+* Assim como o problema anterior, também não foi possível testar a aplicação no Android, pois não houve tempo necessário para migrar o projeto para o Expo ou configurar um emulador Android no notebook.
 
 * O perfil do entregador está com as informações estáticas, pois não foi possível corrigir isso a tempo (a solução pensada foi utilizar redux, porém ia dar trabalho para configurar todo o redux para apenas disponibilizar os dados que já existem na tela de Entregas).
+
+* Não foi possível implementar todos os testes unitários também.
 
 ## 1. Baixar as dependências do projeto
 
