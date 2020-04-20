@@ -6,6 +6,8 @@ import { format, parseISO } from 'date-fns';
 
 import RecipientItem from './RecipientItem';
 
+import EmptyList from '../../components/EmptyList';
+
 import { TopDiv, Actions, Table, TableHeader, TableContent, MinimalTableCell, TableCell } from './styles';
 import api from '../../services/api';
 
@@ -53,7 +55,7 @@ export default function Recipient() {
           </Link>
         </Actions>
       </TopDiv>
-      <Table>
+      {recipients.length === 0 ? (<EmptyList/>) : (<Table>
         <TableHeader>
           <MinimalTableCell>ID</MinimalTableCell>
           <TableCell>NOME</TableCell>
@@ -69,7 +71,8 @@ export default function Recipient() {
             />
           ))}
         </TableContent>
-      </Table>
+      </Table>)}
+
     </>
   );
 }

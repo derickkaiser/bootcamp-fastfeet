@@ -1,4 +1,4 @@
-'use strict';
+
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -25,10 +25,10 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
       },
-    })
+    });
   },
 
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('delivery_problems');
-  }
+  },
 };
