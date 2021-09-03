@@ -14,7 +14,7 @@
     "date-fns": "^2.0.0-beta.5",
     "expo": "^37.0.7",
     "history": "^4.10.1",
-    "immer": "^5.1.0",
+    "immer": "^9.0.6",
     "react": "16.9.0",
     "react-native": "0.61.5",
     "react-native-camera": "^3.22.1",
